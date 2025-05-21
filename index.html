@@ -1,63 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
-    <head>
-
-        <meta charset="UTF-8">
-        <title>Meu Diário</title>
-        <link rel="stylesheet" href="styles.css">
-
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Diário Virtual</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
 <body>
 
+  <!-- header -->
   <header>
-    <h1>📖 Meu Diário</h1>
-    <button id="perfilBtn" class="img-btn"><img src="assets/btn-perfil.png" alt="Perfil"></button>
+    <h1>Meu Diário Virtual</h1>
+    <!-- botão de config, futuramente tacar o sistema de cores pra esse sistema -->
+    <button id="perfilBtn" class="img-btn">
+      <img src="assets/btn-perfil.png" title="Botão para abrir configurações de perfil">
+    </button>
   </header>
 
+  <!-- personalização de cores (beta) -->
   <section id="personalizador">
-    <label>Cor Primária: <input type="color" id="corPrimaria" value="#ffb6d1"></label>
-    <label>Cor Secundária: <input type="color" id="corSecundaria" value="#ff85ab"></label>
-    <label>Cor da Fonte: <input type="color" id="corFonte" value="#444444"></label>
+    <label>Cor Primária: <input type="color" id="corPrimaria" value="#454545"></label>
+    <label>Cor Secundária: <input type="color" id="corSecundaria" value="#707070"></label>
+    <label>Cor da Fonte: <input type="color" id="corFonte" value="#000000"></label>
   </section>
 
+  <!-- calendario e livro -->
   <section id="calendario">
-    <input type="date" id="dataSelecionada">
-    <button id="abrirLivro" class="img-btn"><img src="assets/btn-abrir.png" alt="Abrir Livro"></button>
+    <input type="date" id="dataSelecionada" aria-label="Selecionar data">
+    <button id="abrirLivro" class="img-btn">
+      <img src="assets/btn-livro.png" title="Abrir o livro do diário para a data selecionada">
+    </button>
   </section>
 
+  <!-- Dps de abrir o livro, questão de "pop up" sla -->
   <section id="editor" class="hidden">
     <div id="livro">
+      
       <div class="capa">
         <label for="inputFotoFile">
-          <img id="fotoPerfil" src="assets/perfil.png" alt="Foto de Perfil" title="Clique para mudar">
+          <img id="fotoPerfil" src="assets/perfil.png" title="Clique para mudar a foto de perfil">
         </label>
         <input type="file" id="inputFotoFile" accept="image/*" class="hidden">
+        <!-- user aqui -->
         <h2 id="nomePerfil">Usuário</h2>
       </div>
 
+      <!-- negoço de texto e navegação -->
       <div class="pagina">
-        <textarea id="textoPagina" placeholder="Escreva aqui..."></textarea>
+        <textarea id="textoPagina" placeholder="Escreva aqui seu pensamento, desabafo ou o que quiser..." aria-label="Área para escrever no diário"></textarea>
         <div class="navegacao">
-          <button id="primeiraPagina" class="img-btn"><img src="assets/btn-primeira.png" alt="Primeira Página"></button>
-          <button id="paginaAnterior" class="img-btn"><img src="assets/btn-anterior.png" alt="Página Anterior"></button>
+          <!-- botões pra mudar pagina no diario-->
+           <!-- ordem: primeira pagina, anterior, seguindo e ultima -->
+          <button id="primeiraPagina" class="img-btn">
+            <img src="assets/btn-primeira.png" title="Ir para a primeira página do diário">
+          </button>
+          <button id="paginaAnterior" class="img-btn">
+            <img src="assets/btn-anterior.png" title="Página anterior do diário">
+          </button>
           <span id="dataAtual">Nenhuma data</span>
-          <button id="paginaSeguinte" class="img-btn"><img src="assets/btn-proxima.png" alt="Próxima Página"></button>
-          <button id="ultimaPagina" class="img-btn"><img src="assets/btn-ultima.png" alt="Última Página"></button>
-          <button id="fecharLivro" class="img-btn"><img src="assets/btn-fechar.png" alt="Fechar"></button>
+          <button id="paginaSeguinte" class="img-btn">
+            <img src="assets/btn-proxima.png" title="Próxima página do diário">
+          </button>
+          <button id="ultimaPagina" class="img-btn">
+            <img src="assets/btn-ultima.png" title="Ir para a última página do diário">
+          </button>
+          <button id="fecharLivro" class="img-btn">
+            <img src="assets/btn-fechar.png" title="Fechar o livro do diário">
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <div id="modalPerfil" class="hidden">
-    <label>Nome: <input type="text" id="inputNome"></label>
-    <label>Foto (URL): <input type="text" id="inputFoto"></label>
-    <button id="salvarPerfil" class="img-btn"><img src="assets/btn-salvar.png" alt="Salvar">Salvar</button>
+  <!-- Modalzinho pra editar perfil -->
+  <div id="modalPerfil" class="hidden" role="dialog" aria-labelledby="Editar perfil">
+    <label>Nome: <input type="text" id="inputNome" aria-label="Editar nome do perfil"></label>
+    <br>
+    <label>Foto (URL): <input type="text" id="inputFoto" aria-label="Inserir URL da foto de perfil"></label>
+    <button id="salvarPerfil" class="img-btn">
+      <img src="assets/btn-salvar.png" title="Botão para salvar alterações do perfil">Salvar
+    </button>
   </div>
 
+  <!-- js do site sla -->
   <script src="main.js"></script>
-  
+
 </body>
 </html>
